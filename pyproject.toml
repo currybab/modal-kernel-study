@@ -19,3 +19,41 @@ dev = [
 
 [tool.pyrefly]
 enable-fallback-search-path = true
+
+# Editor diagnostics (basedpyright + Ruff, as run by the Superzent
+# "Python (load_inline)" language). The problem files are scripts that run on
+# the Modal H200 image, so the goal is a clean editor, not strict typing.
+[tool.basedpyright]
+include = ["okc-muse-spark"]
+exclude = ["**/__pycache__", ".venv", "modal_out", "okc-muse-spark/*/others"]
+venvPath = "."
+venv = ".venv"
+typeCheckingMode = "standard"
+# sglang, sgl_kernel, cutlass, triton and cuda-python exist only on the
+# Modal H200 image; they cannot be installed on macOS.
+reportMissingImports = false
+# Each problem directory is run as a script, so `from checks import ...` is
+# meant to resolve against the script's own directory.
+reportImplicitRelativeImport = false
+# Script-style patterns the problem files and harness use as given:
+# Optional values read without narrowing, variables bound inside if/for
+# branches, and torch names that work at runtime but are not re-exported.
+reportOptionalMemberAccess = false
+reportOptionalIterable = false
+reportOptionalSubscript = false
+reportPossiblyUnboundVariable = false
+reportPrivateImportUsage = false
+
+# Ruff 0.17 widened its default rule set (isort, pyupgrade, bugbear, ...);
+# keep the classic defaults (pyflakes and the E4/E7/E9 errors).
+[tool.ruff]
+extend-exclude = ["modal_out", "okc-muse-spark/*/others"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+# `l` is the layer name in the shape tables ("qkv_gate", "o", ...).
+ignore = ["E741"]
+
+[tool.ruff.lint.per-file-ignores]
+# bench.py assigns verify()'s message in a loop without reading it.
+"okc-muse-spark/bench.py" = ["F841"]

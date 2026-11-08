@@ -69,6 +69,7 @@ def main(problem: str = "all", suite: str = "scored", mode: str = "bench",
             raise RuntimeError(f"{tool} failed; see the remote log")
         return
     spec = importlib.util.spec_from_file_location("muse_bench", ROOT / "bench.py")
+    assert spec is not None and spec.loader is not None
     bench = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(bench)
     problems = bench.PROBLEMS if problem == "all" else tuple(p.strip() for p in problem.split(","))

@@ -90,6 +90,7 @@ def validate_options(root, problem, mode, suite, submission, case_id, repeats, s
 
 def load_module(name, path):
     spec = importlib.util.spec_from_file_location(name, path)
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     sys.modules[name] = module
     spec.loader.exec_module(module)

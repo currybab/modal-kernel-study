@@ -63,6 +63,7 @@ def main(
     import importlib.util
 
     spec = importlib.util.spec_from_file_location("muse_bench", ROOT / "bench.py")
+    assert spec is not None and spec.loader is not None
     bench = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(bench)
     options = dict(problem=problem, mode=mode, suite=suite, submission=submission,
