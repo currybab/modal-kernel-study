@@ -42,7 +42,9 @@
 
 ## 해석과 후속 비교
 
-공식 심사기의 graph replay 고정비용 차감, baseline과 후보의 교대 측정, paired speedup 및 신뢰구간, router 부하 목표 보정은 적용하지 않았다. 공식 기준과 차이가 나는 원인은 이 측정만으로 분리할 수 없다. 이 값에서 공식 리더보드 대비 speedup을 계산하지 않는다.
+공식 심사기의 graph replay 고정비용 차감(아래 참고), baseline과 후보의 교대 측정, paired speedup 및 신뢰구간, router 부하 목표 보정은 적용하지 않았다. 공식 기준과 차이가 나는 원인은 이 측정만으로 분리할 수 없다. 이 값에서 공식 리더보드 대비 speedup을 계산하지 않는다.
+
+이 기록 뒤에 `bench.py`는 graph event 대신 프로파일러로 L2 비우기 다음의 GPU 작업 구간만 재도록 바뀌었다. 그래서 같은 명령으로 다시 재면 graph replay 고정비가 빠져 shape마다 약 4.6 µs(H200, muse_bf16_proj에서 4.1–4.9 µs) 작게 나온다. 이 기록의 값은 그 고정비가 포함된 값이다.
 
 후속 후보는 같은 이미지, GPU 종류, 입력 및 가중치 seed, 크기와 반복 수로 baseline과 함께 다시 측정한다. 초기 기록과의 비교만으로 향상을 확정하지 않는다. 특히 기본 `modal_h200.py` 환경은 Torch 2.13.0·Triton 3.7.1이므로 이 baseline 환경과 버전이 다르다.
 

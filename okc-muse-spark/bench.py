@@ -24,6 +24,9 @@ PROBLEMS = (
     "muse_bf16_proj", "muse_attention_decode", "muse_moe_w4a16",
     "muse_decode_layer", "muse_prefill_layer",
 )
+FLUSH_FLOATS = 32 * 1024 * 1024  # 128 MiB, larger than the H200's 50 MB L2
+FLUSH_MIN_US = 15.0  # the flush reduction takes ~28 us on H200; kernels' own reductions are shorter
+SPAN_TRIES = 4  # CUPTI occasionally drops records from a profiled replay
 
 
 def parse_shape(text):
@@ -167,31 +170,52 @@ def prepare_graph(reference, kernel, state, weights, original):
     stream.synchronize()
 
     # Read 128 MiB (larger than H200 L2) before EVERY timed kernel invocation.
-    # Events are captured in the graph; neither cache flushing nor host enqueue
-    # overhead is included in the reported device interval.
-    flush = torch.ones(32 * 1024 * 1024, dtype=torch.float32, device="cuda")
+    # replay_us times only the GPU work after this flush, so neither cache flushing
+    # nor the graph's launch cost is included in the reported device interval.
+    flush = torch.ones(FLUSH_FLOATS, dtype=torch.float32, device="cuda")
     flush_sum = torch.empty((), dtype=torch.float32, device="cuda")
-    start = torch.cuda.Event(enable_timing=True, external=True)
-    end = torch.cuda.Event(enable_timing=True, external=True)
     graph = torch.cuda.CUDAGraph()
     torch.cuda.synchronize()
     with torch.cuda.graph(graph, stream=stream):
         torch.sum(flush, dim=0, out=flush_sum)
-        start.record()
         output = invoke(static)
-        end.record()
     # Everything the graph writes or reads must outlive it: a freed flush_sum would be
     # handed to the next input tensor and overwritten by every replay.
-    return {"static": static, "output": output, "graph": graph, "start": start,
-            "end": end, "flush": flush, "flush_sum": flush_sum, "message": message}
+    return {"static": static, "output": output, "graph": graph,
+            "flush": flush, "flush_sum": flush_sum, "message": message}
+
+
+def gpu_span_us(graph):
+    """Replay once under CUPTI; return the span of the GPU work after the L2 flush, or None.
+
+    The span runs from the first kernel, memset or memcpy after the flush starts to the last one
+    ends. Graph events would also catch the replay's fixed launch cost (about 4.6 us on H200),
+    which the judge subtracts; here it never enters the interval. The first op in the graph
+    must be a reduction over a buffer larger than L2 (FLUSH_MIN_US or longer)."""
+    import torch
+    from torch.profiler import ProfilerActivity, profile
+    torch.cuda.synchronize()
+    with profile(activities=[ProfilerActivity.CUDA]) as prof:
+        graph.replay()
+        torch.cuda.synchronize()
+    ops = sorted((e.time_range.start, e.time_range.end, e.name) for e in prof.events()
+                 if e.device_type == torch.autograd.DeviceType.CUDA)
+    flush = next((i for i, (start, end, name) in enumerate(ops)
+                  if "reduce_kernel" in name and end - start > FLUSH_MIN_US), None)
+    work = ops[flush + 1:] if flush is not None else []
+    if not work:
+        return None
+    return max(end for _, end, _ in work) - work[0][0]
 
 
 def replay_us(captured):
-    import torch
-    torch.cuda.synchronize()
-    captured["graph"].replay()
-    torch.cuda.synchronize()
-    return captured["start"].elapsed_time(captured["end"]) * 1000  # ms -> us
+    """GPU time of one replay, without the L2 flush or the graph's fixed launch cost."""
+    for _ in range(SPAN_TRIES):
+        span = gpu_span_us(captured["graph"])
+        if span is not None:
+            return span
+        print("  (profiler missed part of the replay; replaying again)", flush=True)
+    raise RuntimeError(f"No GPU work found after the L2 flush in {SPAN_TRIES} profiled replays")
 
 
 def summarize(samples):
@@ -348,7 +372,7 @@ def main():
             print(f"{index:2d}  {case['label']}")
         return 0
     report = {"success": False, "options": args, "cases": [],
-              "timing": "CUDA graph device events; cold L2; fresh inputs; every replay checked",
+              "timing": "CUDA graph replay; CUPTI span of the GPU work after the L2 flush (graph launch cost excluded); cold L2; fresh inputs; every replay checked",
               "official_score": False}
     try:
         run(args, report)

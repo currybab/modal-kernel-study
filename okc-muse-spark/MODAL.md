@@ -42,7 +42,7 @@ uv run python okc-muse-spark/bench.py --problem muse_attention_decode --suite sc
 
 ## 측정 방식
 
-가중치를 생성하고 `prepare(weights)`를 한 번 호출한 뒤, 각 크기에서 `kernel_fn`을 워밍업하고 CUDA graph로 캡처한다. 매 반복마다 다른 seed로 입력을 생성해 캡처된 버퍼에 복사한다. 128 MiB 버퍼를 읽어 L2를 비운 다음, 그래프 내부 CUDA event 사이의 커널 실행 시간을 마이크로초로 측정한다. 입력 생성·복사, 캐시 비우기, 정확도 검사, 컴파일과 `prepare` 시간은 측정에서 제외한다. 모든 측정 반복의 출력을 검사하며 attention과 layer 문제는 새 KV cache 값도 검사한다. graph 캡처에 실패하면 eager 시간으로 대체하지 않고 오류를 보고한다.
+가중치를 생성하고 `prepare(weights)`를 한 번 호출한 뒤, 각 크기에서 `kernel_fn`을 워밍업하고 CUDA graph로 캡처한다. 매 반복마다 다른 seed로 입력을 생성해 캡처된 버퍼에 복사한다. 128 MiB 버퍼를 읽어 L2를 비운 다음, replay마다 프로파일러(CUPTI)로 L2 비우기 다음 첫 GPU 작업 시작부터 마지막 작업 끝까지를 마이크로초로 측정한다. graph 앞뒤 CUDA event로 재면 replay 고정비(H200에서 약 4.6 µs)가 같이 잡히는데, 공식 심사기는 이를 양쪽에서 뺀다. 이 구간에는 처음부터 들어가지 않는다. 입력 생성·복사, 캐시 비우기, 정확도 검사, 컴파일과 `prepare` 시간은 측정에서 제외한다. 모든 측정 반복의 출력을 검사하며 attention과 layer 문제는 새 KV cache 값도 검사한다. graph 캡처에 실패하면 eager 시간으로 대체하지 않고 오류를 보고한다.
 
 이 결과는 개발용 절대 시간이다. 공식 OKC의 SGLang 교대 측정, paired speedup, 신뢰구간이나 공식 점수를 재현하지 않는다. 전체 layer의 공식 router 부하 목표도 `TASK.md`의 표에 없으므로 보정하지 않는다. 문서에 공개된 크기와 reference 검사를 이용해 구현을 비교할 때 사용한다.
 
