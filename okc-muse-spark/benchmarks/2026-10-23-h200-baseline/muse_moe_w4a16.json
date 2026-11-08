@@ -1,0 +1,172 @@
+{
+  "success": true,
+  "options": {
+    "problem": "muse_moe_w4a16",
+    "mode": "bench",
+    "suite": "scored",
+    "submission": "baseline.py",
+    "case_id": -1,
+    "repeats": 5,
+    "seed": 2026
+  },
+  "cases": [
+    {
+      "case_id": 0,
+      "shape": {
+        "bs": 1,
+        "sharding": "ep8"
+      },
+      "label": "bs 1, sharding ep8",
+      "load": "decode 1",
+      "weight": 60,
+      "passed": true,
+      "message": "relative L2 error 5.681e-03 (worst row 5.681e-03)",
+      "samples_us": [
+        90.33600240945816,
+        88.639996945858,
+        92.70399808883667,
+        92.3520028591156,
+        87.07199990749359
+      ],
+      "median_us": 90.33600240945816,
+      "min_us": 87.07199990749359,
+      "max_us": 92.70399808883667
+    },
+    {
+      "case_id": 1,
+      "shape": {
+        "bs": 16,
+        "sharding": "ep8"
+      },
+      "label": "bs 16, sharding ep8",
+      "load": "decode 16",
+      "weight": 60,
+      "passed": true,
+      "message": "relative L2 error 5.594e-03 (worst row 5.831e-03)",
+      "samples_us": [
+        170.3680008649826,
+        156.76799416542053,
+        208.76799523830414,
+        176.256000995636,
+        195.64799964427948
+      ],
+      "median_us": 176.256000995636,
+      "min_us": 156.76799416542053,
+      "max_us": 208.76799523830414
+    },
+    {
+      "case_id": 2,
+      "shape": {
+        "bs": 32,
+        "sharding": "ep8"
+      },
+      "label": "bs 32, sharding ep8",
+      "load": "decode 32",
+      "weight": 60,
+      "passed": true,
+      "message": "relative L2 error 5.553e-03 (worst row 5.900e-03)",
+      "samples_us": [
+        182.68799781799316,
+        220.86399793624878,
+        232.83199965953827,
+        168.2559996843338,
+        189.7599995136261
+      ],
+      "median_us": 189.7599995136261,
+      "min_us": 168.2559996843338,
+      "max_us": 232.83199965953827
+    },
+    {
+      "case_id": 3,
+      "shape": {
+        "bs": 8,
+        "sharding": "ep8"
+      },
+      "label": "bs 8, sharding ep8",
+      "load": "verify 1",
+      "weight": 60,
+      "passed": true,
+      "message": "relative L2 error 5.561e-03 (worst row 5.804e-03)",
+      "samples_us": [
+        143.39199662208557,
+        179.61600422859192,
+        141.6960060596466,
+        129.60000336170197,
+        120.38400024175644
+      ],
+      "median_us": 141.6960060596466,
+      "min_us": 120.38400024175644,
+      "max_us": 179.61600422859192
+    },
+    {
+      "case_id": 4,
+      "shape": {
+        "bs": 128,
+        "sharding": "ep8"
+      },
+      "label": "bs 128, sharding ep8",
+      "load": "verify 16",
+      "weight": 60,
+      "passed": true,
+      "message": "relative L2 error 5.565e-03 (worst row 6.103e-03)",
+      "samples_us": [
+        380.0320029258728,
+        432.3520064353943,
+        389.3119990825653,
+        431.42399191856384,
+        460.7680141925812
+      ],
+      "median_us": 431.42399191856384,
+      "min_us": 380.0320029258728,
+      "max_us": 460.7680141925812
+    },
+    {
+      "case_id": 5,
+      "shape": {
+        "bs": 256,
+        "sharding": "ep8"
+      },
+      "label": "bs 256, sharding ep8",
+      "load": "verify 32",
+      "weight": 60,
+      "passed": true,
+      "message": "relative L2 error 5.566e-03 (worst row 5.990e-03)",
+      "samples_us": [
+        626.6880035400391,
+        594.0799713134766,
+        648.8320231437683,
+        620.2560067176819,
+        652.351975440979
+      ],
+      "median_us": 626.6880035400391,
+      "min_us": 594.0799713134766,
+      "max_us": 652.351975440979
+    }
+  ],
+  "timing": "CUDA graph device events; cold L2; fresh inputs; every replay checked",
+  "official_score": false,
+  "environment": {
+    "gpu": "NVIDIA H200",
+    "torch": "2.14.1+cu130",
+    "cuda": "13.0",
+    "triton": "3.8.0",
+    "python": "3.12.3",
+    "sglang_commit": "a55ab7d5ae1bba59ac351e55026fe7f7644ecc5f",
+    "image": "lmsysorg/sglang@sha256:a0ae9cefecc0fb68e74a6f3b7f338eb80a53e3e6df4637ec2f024abc5fec07af",
+    "sglang_kernel": "0.4.9"
+  },
+  "submission_sha256": "4fc48bd9cdfd749863c93a2dbf4e556e0c38fb04acc4fa48a53ef34cbf6c92a1",
+  "aggregate": {
+    "loads_ms": {
+      "decode 1": 5.42016014456749,
+      "decode 16": 10.57536005973816,
+      "decode 32": 11.385599970817566,
+      "verify 1": 8.501760363578796,
+      "verify 16": 25.88543951511383,
+      "verify 32": 37.601280212402344
+    },
+    "geomean_ms": 13.245602144827759,
+    "method": "sum(case median_us * weight) per load; geometric mean across loads"
+  },
+  "exit_code": 0
+}

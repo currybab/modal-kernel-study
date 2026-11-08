@@ -1,0 +1,21 @@
+[project]
+name = "gpu"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.11.1",
+    "pandas>=3.0.5",
+    "torch>=2.13.0",
+    "torchaudio>=2.11.0",
+    "torchvision>=0.28.0",
+]
+
+[dependency-groups]
+dev = [
+    "modal>=1.5.3",
+]
+
+[tool.pyrefly]
+enable-fallback-search-path = true

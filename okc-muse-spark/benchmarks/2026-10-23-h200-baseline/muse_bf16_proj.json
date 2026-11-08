@@ -1,0 +1,700 @@
+{
+  "success": true,
+  "options": {
+    "problem": "muse_bf16_proj",
+    "mode": "bench",
+    "suite": "scored",
+    "submission": "baseline.py",
+    "case_id": -1,
+    "repeats": 5,
+    "seed": 2026
+  },
+  "cases": [
+    {
+      "case_id": 0,
+      "shape": {
+        "m": 1,
+        "layer": "qkv_gate"
+      },
+      "label": "m 1, layer qkv_gate",
+      "load": "decode 1",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.641e-04 (worst row 1.641e-04)",
+      "samples_us": [
+        19.13600042462349,
+        20.608000457286835,
+        18.848000094294548,
+        18.592000007629395,
+        18.144000321626663
+      ],
+      "median_us": 18.848000094294548,
+      "min_us": 18.144000321626663,
+      "max_us": 20.608000457286835
+    },
+    {
+      "case_id": 1,
+      "shape": {
+        "m": 1,
+        "layer": "o"
+      },
+      "label": "m 1, layer o",
+      "load": "decode 1",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 0.000e+00 (worst row 0.000e+00); 1 probe rows exact to 0.0e+00",
+      "samples_us": [
+        12.83199992030859,
+        11.935999616980553,
+        11.296000331640244,
+        11.168000288307667,
+        11.071999557316303
+      ],
+      "median_us": 11.296000331640244,
+      "min_us": 11.071999557316303,
+      "max_us": 12.83199992030859
+    },
+    {
+      "case_id": 2,
+      "shape": {
+        "m": 1,
+        "layer": "pooler"
+      },
+      "label": "m 1, layer pooler",
+      "load": "decode 1",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.380e-04 (worst row 1.380e-04)",
+      "samples_us": [
+        25.760000571608543,
+        26.464000344276428,
+        25.696000084280968,
+        26.688000187277794,
+        25.599999353289604
+      ],
+      "median_us": 25.760000571608543,
+      "min_us": 25.599999353289604,
+      "max_us": 26.688000187277794
+    },
+    {
+      "case_id": 3,
+      "shape": {
+        "m": 1,
+        "layer": "unpooler"
+      },
+      "label": "m 1, layer unpooler",
+      "load": "decode 1",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 0.000e+00 (worst row 0.000e+00)",
+      "samples_us": [
+        12.000000104308128,
+        12.671999633312225,
+        12.35199999064207,
+        11.552000418305397,
+        12.543999589979649
+      ],
+      "median_us": 12.35199999064207,
+      "min_us": 11.552000418305397,
+      "max_us": 12.671999633312225
+    },
+    {
+      "case_id": 4,
+      "shape": {
+        "m": 1,
+        "layer": "router"
+      },
+      "label": "m 1, layer router",
+      "load": "decode 1",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.075e-07 (worst row 1.075e-07)",
+      "samples_us": [
+        16.416000202298164,
+        15.904000028967857,
+        15.744000673294067,
+        15.32800029963255,
+        15.680000185966492
+      ],
+      "median_us": 15.744000673294067,
+      "min_us": 15.32800029963255,
+      "max_us": 16.416000202298164
+    },
+    {
+      "case_id": 5,
+      "shape": {
+        "m": 16,
+        "layer": "qkv_gate"
+      },
+      "label": "m 16, layer qkv_gate",
+      "load": "decode 16",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.042e-04 (worst row 2.473e-04); 2 probe rows exact to 0.0e+00",
+      "samples_us": [
+        19.071999937295914,
+        19.551999866962433,
+        19.872000440955162,
+        19.13600042462349,
+        19.007999449968338
+      ],
+      "median_us": 19.13600042462349,
+      "min_us": 19.007999449968338,
+      "max_us": 19.872000440955162
+    },
+    {
+      "case_id": 6,
+      "shape": {
+        "m": 16,
+        "layer": "o"
+      },
+      "label": "m 16, layer o",
+      "load": "decode 16",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 4.845e-05 (worst row 1.229e-04); 3 probe rows exact to 0.0e+00",
+      "samples_us": [
+        13.376000337302685,
+        12.128000147640705,
+        11.680000461637974,
+        11.58399973064661,
+        11.42400037497282
+      ],
+      "median_us": 11.680000461637974,
+      "min_us": 11.42400037497282,
+      "max_us": 13.376000337302685
+    },
+    {
+      "case_id": 7,
+      "shape": {
+        "m": 16,
+        "layer": "pooler"
+      },
+      "label": "m 16, layer pooler",
+      "load": "decode 16",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 8.089e-05 (worst row 1.399e-04); 5 probe rows exact to 0.0e+00",
+      "samples_us": [
+        26.43200010061264,
+        27.424000203609467,
+        25.631999596953392,
+        25.728000327944756,
+        25.696000084280968
+      ],
+      "median_us": 25.728000327944756,
+      "min_us": 25.631999596953392,
+      "max_us": 27.424000203609467
+    },
+    {
+      "case_id": 8,
+      "shape": {
+        "m": 16,
+        "layer": "unpooler"
+      },
+      "label": "m 16, layer unpooler",
+      "load": "decode 16",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.523e-04 (worst row 3.204e-04); 2 probe rows exact to 0.0e+00",
+      "samples_us": [
+        24.4159996509552,
+        24.09599907696247,
+        23.391999304294586,
+        22.911999374628067,
+        22.911999374628067
+      ],
+      "median_us": 23.391999304294586,
+      "min_us": 22.911999374628067,
+      "max_us": 24.4159996509552
+    },
+    {
+      "case_id": 9,
+      "shape": {
+        "m": 16,
+        "layer": "router"
+      },
+      "label": "m 16, layer router",
+      "load": "decode 16",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 2.831e-06 (worst row 3.045e-06); 2 probe rows exact to 2.6e-06",
+      "samples_us": [
+        22.52800017595291,
+        22.5600004196167,
+        21.088000386953354,
+        20.70399932563305,
+        21.856000646948814
+      ],
+      "median_us": 21.856000646948814,
+      "min_us": 20.70399932563305,
+      "max_us": 22.5600004196167
+    },
+    {
+      "case_id": 10,
+      "shape": {
+        "m": 32,
+        "layer": "qkv_gate"
+      },
+      "label": "m 32, layer qkv_gate",
+      "load": "decode 32",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 7.656e-05 (worst row 2.305e-04); 4 probe rows exact to 0.0e+00",
+      "samples_us": [
+        21.888000890612602,
+        20.255999639630318,
+        19.45599913597107,
+        19.328000023961067,
+        19.13600042462349
+      ],
+      "median_us": 19.45599913597107,
+      "min_us": 19.13600042462349,
+      "max_us": 21.888000890612602
+    },
+    {
+      "case_id": 11,
+      "shape": {
+        "m": 32,
+        "layer": "o"
+      },
+      "label": "m 32, layer o",
+      "load": "decode 32",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 4.420e-05 (worst row 1.756e-04); 5 probe rows exact to 0.0e+00",
+      "samples_us": [
+        11.872000060975552,
+        12.640000320971012,
+        12.608000077307224,
+        11.90400030463934,
+        11.744000017642975
+      ],
+      "median_us": 11.90400030463934,
+      "min_us": 11.744000017642975,
+      "max_us": 12.640000320971012
+    },
+    {
+      "case_id": 12,
+      "shape": {
+        "m": 32,
+        "layer": "pooler"
+      },
+      "label": "m 32, layer pooler",
+      "load": "decode 32",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 9.543e-05 (worst row 2.155e-04); 9 probe rows exact to 0.0e+00",
+      "samples_us": [
+        29.21600081026554,
+        28.28799933195114,
+        27.07199938595295,
+        26.944000273942947,
+        26.559999212622643
+      ],
+      "median_us": 27.07199938595295,
+      "min_us": 26.559999212622643,
+      "max_us": 29.21600081026554
+    },
+    {
+      "case_id": 13,
+      "shape": {
+        "m": 32,
+        "layer": "unpooler"
+      },
+      "label": "m 32, layer unpooler",
+      "load": "decode 32",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.552e-04 (worst row 2.494e-04); 6 probe rows exact to 0.0e+00",
+      "samples_us": [
+        23.871999233961105,
+        24.25600029528141,
+        23.231999948620796,
+        22.975999861955643,
+        23.04000034928322
+      ],
+      "median_us": 23.231999948620796,
+      "min_us": 22.975999861955643,
+      "max_us": 24.25600029528141
+    },
+    {
+      "case_id": 14,
+      "shape": {
+        "m": 32,
+        "layer": "router"
+      },
+      "label": "m 32, layer router",
+      "load": "decode 32",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 2.794e-06 (worst row 3.131e-06); 1 probe rows exact to 2.4e-06",
+      "samples_us": [
+        22.463999688625336,
+        22.304000332951546,
+        20.896000787615776,
+        21.247999742627144,
+        21.43999934196472
+      ],
+      "median_us": 21.43999934196472,
+      "min_us": 20.896000787615776,
+      "max_us": 22.463999688625336
+    },
+    {
+      "case_id": 15,
+      "shape": {
+        "m": 8,
+        "layer": "qkv_gate"
+      },
+      "label": "m 8, layer qkv_gate",
+      "load": "verify 1",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.124e-04 (worst row 1.868e-04); 3 probe rows exact to 0.0e+00",
+      "samples_us": [
+        19.7759997099638,
+        19.999999552965164,
+        19.45599913597107,
+        20.51199972629547,
+        19.200000911951065
+      ],
+      "median_us": 19.7759997099638,
+      "min_us": 19.200000911951065,
+      "max_us": 20.51199972629547
+    },
+    {
+      "case_id": 16,
+      "shape": {
+        "m": 8,
+        "layer": "o"
+      },
+      "label": "m 8, layer o",
+      "load": "verify 1",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 8.732e-05 (worst row 1.752e-04); 3 probe rows exact to 0.0e+00",
+      "samples_us": [
+        12.799999676644802,
+        11.807999573647976,
+        11.136000044643879,
+        11.19999960064888,
+        11.52000017464161
+      ],
+      "median_us": 11.52000017464161,
+      "min_us": 11.136000044643879,
+      "max_us": 12.799999676644802
+    },
+    {
+      "case_id": 17,
+      "shape": {
+        "m": 8,
+        "layer": "pooler"
+      },
+      "label": "m 8, layer pooler",
+      "load": "verify 1",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.222e-04 (worst row 1.811e-04); 1 probe rows exact to 0.0e+00",
+      "samples_us": [
+        26.079999282956123,
+        27.68000029027462,
+        26.016000658273697,
+        26.079999282956123,
+        25.728000327944756
+      ],
+      "median_us": 26.079999282956123,
+      "min_us": 25.728000327944756,
+      "max_us": 27.68000029027462
+    },
+    {
+      "case_id": 18,
+      "shape": {
+        "m": 8,
+        "layer": "unpooler"
+      },
+      "label": "m 8, layer unpooler",
+      "load": "verify 1",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.060e-04 (worst row 2.330e-04); 2 probe rows exact to 0.0e+00",
+      "samples_us": [
+        12.768000364303589,
+        12.959999963641167,
+        12.06399966031313,
+        11.776000261306763,
+        11.776000261306763
+      ],
+      "median_us": 12.06399966031313,
+      "min_us": 11.776000261306763,
+      "max_us": 12.959999963641167
+    },
+    {
+      "case_id": 19,
+      "shape": {
+        "m": 8,
+        "layer": "router"
+      },
+      "label": "m 8, layer router",
+      "load": "verify 1",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 2.964e-07 (worst row 3.221e-07); 1 probe rows exact to 0.0e+00",
+      "samples_us": [
+        32.15999901294708,
+        31.968001276254654,
+        31.231999397277832,
+        31.136000528931618,
+        30.97599931061268
+      ],
+      "median_us": 31.231999397277832,
+      "min_us": 30.97599931061268,
+      "max_us": 32.15999901294708
+    },
+    {
+      "case_id": 20,
+      "shape": {
+        "m": 128,
+        "layer": "qkv_gate"
+      },
+      "label": "m 128, layer qkv_gate",
+      "load": "verify 16",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.543e-04 (worst row 4.677e-04); 20 probe rows exact to 0.0e+00",
+      "samples_us": [
+        22.304000332951546,
+        22.52800017595291,
+        21.75999991595745,
+        21.824000403285027,
+        21.43999934196472
+      ],
+      "median_us": 21.824000403285027,
+      "min_us": 21.43999934196472,
+      "max_us": 22.52800017595291
+    },
+    {
+      "case_id": 21,
+      "shape": {
+        "m": 128,
+        "layer": "o"
+      },
+      "label": "m 128, layer o",
+      "load": "verify 16",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 5.671e-05 (worst row 2.147e-04); 19 probe rows exact to 0.0e+00",
+      "samples_us": [
+        14.14399966597557,
+        12.384000234305859,
+        12.319999746978283,
+        12.543999589979649,
+        12.06399966031313
+      ],
+      "median_us": 12.384000234305859,
+      "min_us": 12.06399966031313,
+      "max_us": 14.14399966597557
+    },
+    {
+      "case_id": 22,
+      "shape": {
+        "m": 128,
+        "layer": "pooler"
+      },
+      "label": "m 128, layer pooler",
+      "load": "verify 16",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 2.124e-04 (worst row 3.828e-04); 12 probe rows exact to 0.0e+00",
+      "samples_us": [
+        31.647998839616776,
+        32.735999673604965,
+        31.136000528931618,
+        31.168000772595406,
+        30.559999868273735
+      ],
+      "median_us": 31.168000772595406,
+      "min_us": 30.559999868273735,
+      "max_us": 32.735999673604965
+    },
+    {
+      "case_id": 23,
+      "shape": {
+        "m": 128,
+        "layer": "unpooler"
+      },
+      "label": "m 128, layer unpooler",
+      "load": "verify 16",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.519e-04 (worst row 3.172e-04); 12 probe rows exact to 0.0e+00",
+      "samples_us": [
+        27.648000046610832,
+        25.66399984061718,
+        24.768000468611717,
+        24.927999824285507,
+        24.927999824285507
+      ],
+      "median_us": 24.927999824285507,
+      "min_us": 24.768000468611717,
+      "max_us": 27.648000046610832
+    },
+    {
+      "case_id": 24,
+      "shape": {
+        "m": 128,
+        "layer": "router"
+      },
+      "label": "m 128, layer router",
+      "load": "verify 16",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 2.779e-06 (worst row 3.266e-06); 21 probe rows exact to 2.9e-06",
+      "samples_us": [
+        23.16799946129322,
+        23.19999970495701,
+        21.888000890612602,
+        22.23999984562397,
+        22.016000002622604
+      ],
+      "median_us": 22.23999984562397,
+      "min_us": 21.888000890612602,
+      "max_us": 23.19999970495701
+    },
+    {
+      "case_id": 25,
+      "shape": {
+        "m": 256,
+        "layer": "qkv_gate"
+      },
+      "label": "m 256, layer qkv_gate",
+      "load": "verify 32",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 2.057e-04 (worst row 5.338e-04); 37 probe rows exact to 0.0e+00",
+      "samples_us": [
+        25.567999109625816,
+        24.4159996509552,
+        24.032000452280045,
+        24.992000311613083,
+        24.032000452280045
+      ],
+      "median_us": 24.4159996509552,
+      "min_us": 24.032000452280045,
+      "max_us": 25.567999109625816
+    },
+    {
+      "case_id": 26,
+      "shape": {
+        "m": 256,
+        "layer": "o"
+      },
+      "label": "m 256, layer o",
+      "load": "verify 32",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 6.056e-05 (worst row 2.238e-04); 31 probe rows exact to 0.0e+00",
+      "samples_us": [
+        15.456000342965126,
+        14.879999682307243,
+        14.4640002399683,
+        14.592000283300877,
+        14.112000353634357
+      ],
+      "median_us": 14.592000283300877,
+      "min_us": 14.112000353634357,
+      "max_us": 15.456000342965126
+    },
+    {
+      "case_id": 27,
+      "shape": {
+        "m": 256,
+        "layer": "pooler"
+      },
+      "label": "m 256, layer pooler",
+      "load": "verify 32",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 2.084e-04 (worst row 4.712e-04); 27 probe rows exact to 0.0e+00",
+      "samples_us": [
+        34.912001341581345,
+        34.55999866127968,
+        34.97600182890892,
+        33.56799855828285,
+        35.551998764276505
+      ],
+      "median_us": 34.912001341581345,
+      "min_us": 33.56799855828285,
+      "max_us": 35.551998764276505
+    },
+    {
+      "case_id": 28,
+      "shape": {
+        "m": 256,
+        "layer": "unpooler"
+      },
+      "label": "m 256, layer unpooler",
+      "load": "verify 32",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 1.389e-04 (worst row 2.824e-04); 35 probe rows exact to 0.0e+00",
+      "samples_us": [
+        30.7839997112751,
+        30.112000182271004,
+        29.055999591946602,
+        29.37600016593933,
+        29.08799983561039
+      ],
+      "median_us": 29.37600016593933,
+      "min_us": 29.055999591946602,
+      "max_us": 30.7839997112751
+    },
+    {
+      "case_id": 29,
+      "shape": {
+        "m": 256,
+        "layer": "router"
+      },
+      "label": "m 256, layer router",
+      "load": "verify 32",
+      "weight": 62,
+      "passed": true,
+      "message": "relative L2 error 3.174e-06 (worst row 3.612e-06); 39 probe rows exact to 2.9e-06",
+      "samples_us": [
+        24.671999737620354,
+        23.93599972128868,
+        23.840000852942467,
+        23.520000278949738,
+        23.584000766277313
+      ],
+      "median_us": 23.840000852942467,
+      "min_us": 23.520000278949738,
+      "max_us": 24.671999737620354
+    }
+  ],
+  "timing": "CUDA graph device events; cold L2; fresh inputs; every replay checked",
+  "official_score": false,
+  "environment": {
+    "gpu": "NVIDIA H200",
+    "torch": "2.14.1+cu130",
+    "cuda": "13.0",
+    "triton": "3.8.0",
+    "python": "3.12.3",
+    "sglang_commit": "a55ab7d5ae1bba59ac351e55026fe7f7644ecc5f",
+    "image": "lmsysorg/sglang@sha256:a0ae9cefecc0fb68e74a6f3b7f338eb80a53e3e6df4637ec2f024abc5fec07af",
+    "sglang_kernel": "0.4.9"
+  },
+  "submission_sha256": "39f52ea5b65505958aa9dee9c8129dd394cbba4e670046f862b5a88ce91a0574",
+  "aggregate": {
+    "loads_ms": {
+      "decode 1": 5.208000103011727,
+      "decode 16": 6.311104072257876,
+      "decode 32": 6.39244788326323,
+      "verify 1": 6.2416638899594545,
+      "verify 16": 6.977728066965938,
+      "verify 32": 7.882432142272592
+    },
+    "geomean_ms": 6.451881223115103,
+    "method": "sum(case median_us * weight) per load; geometric mean across loads"
+  },
+  "exit_code": 0
+}

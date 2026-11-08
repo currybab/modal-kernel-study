@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-23",
+  "environment": {
+    "gpu": "NVIDIA H200",
+    "torch": "2.14.1+cu130",
+    "cuda": "13.0",
+    "triton": "3.8.0",
+    "python": "3.12.3",
+    "sglang_commit": "a55ab7d5ae1bba59ac351e55026fe7f7644ecc5f",
+    "image": "lmsysorg/sglang@sha256:a0ae9cefecc0fb68e74a6f3b7f338eb80a53e3e6df4637ec2f024abc5fec07af",
+    "sglang_kernel": "0.4.9"
+  },
+  "rows": [
+    {
+      "problem": "muse_bf16_proj",
+      "official_sglang_ms": 4.8308,
+      "modal_sglang_ms": 6.451881223115103,
+      "difference_percent": 33.55720011416541,
+      "scored_shapes": 30,
+      "repeats_per_shape": 5,
+      "loads_ms": {
+        "decode 1": 5.208000103011727,
+        "decode 16": 6.311104072257876,
+        "decode 32": 6.39244788326323,
+        "verify 1": 6.2416638899594545,
+        "verify 16": 6.977728066965938,
+        "verify 32": 7.882432142272592
+      },
+      "report_file": "muse_bf16_proj.json",
+      "source_url": "https://openkernelchallenge.dev/problems/muse_bf16_proj",
+      "original_report_file": "modal_out/H200/muse_bf16_proj/20261023T104112.394676Z-baseline-bench.json"
+    },
+    {
+      "problem": "muse_attention_decode",
+      "official_sglang_ms": 3.7663,
+      "modal_sglang_ms": 4.240262053156303,
+      "difference_percent": 12.584288377354502,
+      "scored_shapes": 12,
+      "repeats_per_shape": 5,
+      "loads_ms": {
+        "decode 1": 1.7432319708168507,
+        "decode 16": 4.851584084331989,
+        "decode 32": 8.029952093958855,
+        "verify 1": 2.0775679759681225,
+        "verify 16": 5.005824029445648,
+        "verify 32": 8.229504056274891
+      },
+      "report_file": "muse_attention_decode.json",
+      "source_url": "https://openkernelchallenge.dev/problems/muse_attention_decode",
+      "original_report_file": "modal_out/H200/muse_attention_decode/20261023T104305.438546Z-baseline-bench.json"
+    },
+    {
+      "problem": "muse_moe_w4a16",
+      "official_sglang_ms": 13.4485,
+      "modal_sglang_ms": 13.245602144827759,
+      "difference_percent": -1.50870249598275,
+      "scored_shapes": 6,
+      "repeats_per_shape": 5,
+      "loads_ms": {
+        "decode 1": 5.42016014456749,
+        "decode 16": 10.57536005973816,
+        "decode 32": 11.385599970817566,
+        "verify 1": 8.501760363578796,
+        "verify 16": 25.88543951511383,
+        "verify 32": 37.601280212402344
+      },
+      "report_file": "muse_moe_w4a16.json",
+      "source_url": "https://openkernelchallenge.dev/problems/muse_moe_w4a16",
+      "original_report_file": "modal_out/H200/muse_moe_w4a16/20261023T104736.371821Z-baseline-bench.json"
+    },
+    {
+      "problem": "muse_decode_layer",
+      "official_sglang_ms": 22.6203,
+      "modal_sglang_ms": 23.475536381853146,
+      "difference_percent": 3.7808357177099516,
+      "scored_shapes": 12,
+      "repeats_per_shape": 5,
+      "loads_ms": {
+        "decode 1": 11.799040079116821,
+        "decode 16": 19.272000074386597,
+        "decode 32": 21.94988715648651,
+        "verify 1": 18.451456248760223,
+        "verify 16": 36.01216149330139,
+        "verify 32": 50.46700716018677
+      },
+      "report_file": "muse_decode_layer.json",
+      "source_url": "https://openkernelchallenge.dev/problems/muse_decode_layer",
+      "original_report_file": "modal_out/H200/muse_decode_layer/20261023T104844.524917Z-baseline-bench.json"
+    },
+    {
+      "problem": "muse_prefill_layer",
+      "official_sglang_ms": 387.4039,
+      "modal_sglang_ms": 343.18766948821406,
+      "difference_percent": -11.413470672800653,
+      "scored_shapes": 8,
+      "repeats_per_shape": 5,
+      "loads_ms": {
+        "turn 1": 67.20627343654633,
+        "turn 4": 205.39276504516602,
+        "first turn": 2928.195510864258
+      },
+      "report_file": "muse_prefill_layer.json",
+      "source_url": "https://openkernelchallenge.dev/problems/muse_prefill_layer",
+      "original_report_file": "modal_out/H200/muse_prefill_layer/20261023T104933.094343Z-baseline-bench.json"
+    }
+  ],
+  "total_scored_shapes": 68,
+  "total_checked_timed_replays": 340,
+  "official_score": false,
+  "notes": [
+    "Unmodified baseline.py; CUDA graph device events; cold L2; fresh inputs; every timed replay checked.",
+    "No official graph replay fixed-cost correction, paired timing, or router-load calibration.",
+    "Per-load weighted sums of case medians, then geometric mean across loads."
+  ],
+  "leaderboard_reported_by_user": {
+    "source": "User-provided snapshot, 2026-10-23; not a measurement from this run",
+    "best_ms": {
+      "muse_bf16_proj": 3.34,
+      "muse_attention_decode": 1.59,
+      "muse_moe_w4a16": 5.78,
+      "muse_decode_layer": 12.13,
+      "muse_prefill_layer": 228.5
+    }
+  }
+}

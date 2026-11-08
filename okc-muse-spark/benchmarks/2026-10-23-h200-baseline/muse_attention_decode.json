@@ -1,0 +1,366 @@
+{
+  "success": true,
+  "options": {
+    "problem": "muse_attention_decode",
+    "mode": "bench",
+    "suite": "scored",
+    "submission": "baseline.py",
+    "case_id": -1,
+    "repeats": 5,
+    "seed": 2026
+  },
+  "cases": [
+    {
+      "case_id": 0,
+      "shape": {
+        "batch": 1,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "sliding",
+        "page": 1,
+        "dist": "soft"
+      },
+      "label": "batch 1, ctx 80000, heads tp8, layer sliding, page 1, dist soft",
+      "load": "decode 1",
+      "weight": 46,
+      "passed": true,
+      "message": "relative L2 error 5.145e-02 (worst row 5.145e-02) [bound 0.150: 2.5 x the reference's 0.056 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        27.744000777602196,
+        24.800000712275505,
+        24.639999493956566,
+        24.607999250292778,
+        24.607999250292778
+      ],
+      "median_us": 24.639999493956566,
+      "min_us": 24.607999250292778,
+      "max_us": 27.744000777602196
+    },
+    {
+      "case_id": 1,
+      "shape": {
+        "batch": 1,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "full",
+        "page": 1,
+        "dist": "coherent"
+      },
+      "label": "batch 1, ctx 80000, heads tp8, layer full, page 1, dist coherent",
+      "load": "decode 1",
+      "weight": 16,
+      "passed": true,
+      "message": "relative L2 error 3.037e-02 (worst row 3.037e-02) [bound 0.094: 2.5 x the reference's 0.032 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        39.03999924659729,
+        37.53599897027016,
+        38.11199963092804,
+        37.50399872660637,
+        38.336001336574554
+      ],
+      "median_us": 38.11199963092804,
+      "min_us": 37.50399872660637,
+      "max_us": 39.03999924659729
+    },
+    {
+      "case_id": 2,
+      "shape": {
+        "batch": 16,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "sliding",
+        "page": 1,
+        "spread": "agentic",
+        "dist": "soft"
+      },
+      "label": "batch 16, ctx 80000, heads tp8, layer sliding, page 1, spread agentic, dist soft",
+      "load": "decode 16",
+      "weight": 46,
+      "passed": true,
+      "message": "relative L2 error 6.298e-02 (worst row 7.566e-02) [bound 0.150: 2.5 x the reference's 0.062 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        34.68799963593483,
+        32.48000144958496,
+        32.607998698949814,
+        34.01599824428558,
+        33.85600075125694
+      ],
+      "median_us": 33.85600075125694,
+      "min_us": 32.48000144958496,
+      "max_us": 34.68799963593483
+    },
+    {
+      "case_id": 3,
+      "shape": {
+        "batch": 16,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "full",
+        "page": 1,
+        "spread": "agentic",
+        "dist": "coherent"
+      },
+      "label": "batch 16, ctx 80000, heads tp8, layer full, page 1, spread agentic, dist coherent",
+      "load": "decode 16",
+      "weight": 16,
+      "passed": true,
+      "message": "relative L2 error 4.893e-02 (worst row 6.905e-02) [bound 0.121: 2.5 x the reference's 0.043 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        201.05600357055664,
+        205.88800311088562,
+        202.4639993906021,
+        207.45599269866943,
+        207.74400234222412
+      ],
+      "median_us": 205.88800311088562,
+      "min_us": 201.05600357055664,
+      "max_us": 207.74400234222412
+    },
+    {
+      "case_id": 4,
+      "shape": {
+        "batch": 32,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "sliding",
+        "page": 1,
+        "spread": "agentic",
+        "dist": "soft"
+      },
+      "label": "batch 32, ctx 80000, heads tp8, layer sliding, page 1, spread agentic, dist soft",
+      "load": "decode 32",
+      "weight": 46,
+      "passed": true,
+      "message": "relative L2 error 6.139e-02 (worst row 7.767e-02) [bound 0.150: 2.5 x the reference's 0.059 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        39.51999917626381,
+        37.63199970126152,
+        37.43999823927879,
+        40.70400074124336,
+        38.015998899936676
+      ],
+      "median_us": 38.015998899936676,
+      "min_us": 37.43999823927879,
+      "max_us": 40.70400074124336
+    },
+    {
+      "case_id": 5,
+      "shape": {
+        "batch": 32,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "full",
+        "page": 1,
+        "spread": "agentic",
+        "dist": "coherent"
+      },
+      "label": "batch 32, ctx 80000, heads tp8, layer full, page 1, spread agentic, dist coherent",
+      "load": "decode 32",
+      "weight": 16,
+      "passed": true,
+      "message": "relative L2 error 5.884e-02 (worst row 7.949e-02) [bound 0.124: 2.5 x the reference's 0.044 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        516.0959959030151,
+        392.5440013408661,
+        392.5760090351105,
+        391.7759954929352,
+        518.176019191742
+      ],
+      "median_us": 392.5760090351105,
+      "min_us": 391.7759954929352,
+      "max_us": 518.176019191742
+    },
+    {
+      "case_id": 6,
+      "shape": {
+        "batch": 1,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "sliding",
+        "page": 1,
+        "q_len": 8,
+        "dist": "soft"
+      },
+      "label": "batch 1, ctx 80000, heads tp8, layer sliding, page 1, q_len 8, dist soft",
+      "load": "verify 1",
+      "weight": 46,
+      "passed": true,
+      "message": "relative L2 error 6.322e-02 (worst row 7.713e-02) [bound 0.150: 2.5 x the reference's 0.058 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        31.231999397277832,
+        30.01599945127964,
+        29.983999207615852,
+        29.983999207615852,
+        30.17600066959858
+      ],
+      "median_us": 30.01599945127964,
+      "min_us": 29.983999207615852,
+      "max_us": 31.231999397277832
+    },
+    {
+      "case_id": 7,
+      "shape": {
+        "batch": 1,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "full",
+        "page": 1,
+        "q_len": 8,
+        "dist": "coherent"
+      },
+      "label": "batch 1, ctx 80000, heads tp8, layer full, page 1, q_len 8, dist coherent",
+      "load": "verify 1",
+      "weight": 16,
+      "passed": true,
+      "message": "relative L2 error 2.177e-02 (worst row 3.295e-02) [bound 0.080: 2.5 x the reference's 0.026 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        44.28799822926521,
+        43.55200007557869,
+        44.256001710891724,
+        43.10400038957596,
+        42.7200011909008
+      ],
+      "median_us": 43.55200007557869,
+      "min_us": 42.7200011909008,
+      "max_us": 44.28799822926521
+    },
+    {
+      "case_id": 8,
+      "shape": {
+        "batch": 16,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "sliding",
+        "page": 1,
+        "q_len": 8,
+        "spread": "agentic",
+        "dist": "soft"
+      },
+      "label": "batch 16, ctx 80000, heads tp8, layer sliding, page 1, q_len 8, spread agentic, dist soft",
+      "load": "verify 16",
+      "weight": 46,
+      "passed": true,
+      "message": "relative L2 error 6.810e-02 (worst row 9.769e-02) [bound 0.150: 2.5 x the reference's 0.067 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        35.90400144457817,
+        35.00799834728241,
+        34.94400158524513,
+        35.071998834609985,
+        35.80800071358681
+      ],
+      "median_us": 35.071998834609985,
+      "min_us": 34.94400158524513,
+      "max_us": 35.90400144457817
+    },
+    {
+      "case_id": 9,
+      "shape": {
+        "batch": 16,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "full",
+        "page": 1,
+        "q_len": 8,
+        "spread": "agentic",
+        "dist": "coherent"
+      },
+      "label": "batch 16, ctx 80000, heads tp8, layer full, page 1, q_len 8, spread agentic, dist coherent",
+      "load": "verify 16",
+      "weight": 16,
+      "passed": true,
+      "message": "relative L2 error 3.410e-02 (worst row 7.020e-02) [bound 0.094: 2.5 x the reference's 0.032 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        210.4319930076599,
+        212.44800090789795,
+        212.0320051908493,
+        212.89600431919098,
+        208.80000293254852
+      ],
+      "median_us": 212.0320051908493,
+      "min_us": 208.80000293254852,
+      "max_us": 212.89600431919098
+    },
+    {
+      "case_id": 10,
+      "shape": {
+        "batch": 32,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "sliding",
+        "page": 1,
+        "q_len": 8,
+        "spread": "agentic",
+        "dist": "soft"
+      },
+      "label": "batch 32, ctx 80000, heads tp8, layer sliding, page 1, q_len 8, spread agentic, dist soft",
+      "load": "verify 32",
+      "weight": 46,
+      "passed": true,
+      "message": "relative L2 error 6.633e-02 (worst row 1.055e-01) [bound 0.150: 2.5 x the reference's 0.065 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        42.65600070357323,
+        41.4079986512661,
+        41.24800115823746,
+        42.33599826693535,
+        40.511999279260635
+      ],
+      "median_us": 41.4079986512661,
+      "min_us": 40.511999279260635,
+      "max_us": 42.65600070357323
+    },
+    {
+      "case_id": 11,
+      "shape": {
+        "batch": 32,
+        "ctx": 80000,
+        "heads": "tp8",
+        "layer": "full",
+        "page": 1,
+        "q_len": 8,
+        "spread": "agentic",
+        "dist": "coherent"
+      },
+      "label": "batch 32, ctx 80000, heads tp8, layer full, page 1, q_len 8, spread agentic, dist coherent",
+      "load": "verify 32",
+      "weight": 16,
+      "passed": true,
+      "message": "relative L2 error 3.571e-02 (worst row 9.368e-02) [bound 0.084: 2.5 x the reference's 0.028 with FP8 E4M3 queries + 0.015]",
+      "samples_us": [
+        397.8880047798157,
+        389.9199962615967,
+        395.29600739479065,
+        395.1359987258911,
+        399.3600010871887
+      ],
+      "median_us": 395.29600739479065,
+      "min_us": 389.9199962615967,
+      "max_us": 399.3600010871887
+    }
+  ],
+  "timing": "CUDA graph device events; cold L2; fresh inputs; every replay checked",
+  "official_score": false,
+  "environment": {
+    "gpu": "NVIDIA H200",
+    "torch": "2.14.1+cu130",
+    "cuda": "13.0",
+    "triton": "3.8.0",
+    "python": "3.12.3",
+    "sglang_commit": "a55ab7d5ae1bba59ac351e55026fe7f7644ecc5f",
+    "image": "lmsysorg/sglang@sha256:a0ae9cefecc0fb68e74a6f3b7f338eb80a53e3e6df4637ec2f024abc5fec07af",
+    "sglang_kernel": "0.4.9"
+  },
+  "submission_sha256": "37f51207283f85a65eb393b1dfb1344759d7df0bdec5450e34d24e7139f56ecc",
+  "aggregate": {
+    "loads_ms": {
+      "decode 1": 1.7432319708168507,
+      "decode 16": 4.851584084331989,
+      "decode 32": 8.029952093958855,
+      "verify 1": 2.0775679759681225,
+      "verify 16": 5.005824029445648,
+      "verify 32": 8.229504056274891
+    },
+    "geomean_ms": 4.240262053156303,
+    "method": "sum(case median_us * weight) per load; geometric mean across loads"
+  },
+  "exit_code": 0
+}

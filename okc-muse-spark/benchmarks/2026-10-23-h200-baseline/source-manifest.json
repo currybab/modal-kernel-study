@@ -1,0 +1,30 @@
+{
+  "git_head_before_archive": "c1cdc4967b1b3229a2d19adc583d1b71d1a21a9f",
+  "sha256": {
+    "bench.py": "66c7a28bdad9c2749a9416b5473db7c0a991c9c1618febb36cd904691d73c63e",
+    "modal_baseline.py": "9fea0a502b77cb0caf787bf95711eb8b9d0b6392ed1dfc055309630b1d40eb02",
+    "muse_bf16_proj/baseline.py": "39f52ea5b65505958aa9dee9c8129dd394cbba4e670046f862b5a88ce91a0574",
+    "muse_bf16_proj/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+    "muse_bf16_proj/reference.py": "e62491abc9ddcad33f5faba8b0ee74cf6370b7be5dd2dc05031742f3ebf7147d",
+    "muse_bf16_proj/submission.py": "964eed6cfef28ad2dc28ca05487a0bf28f7183ba12470eb82acc152cc5a25154",
+    "muse_attention_decode/baseline.py": "37f51207283f85a65eb393b1dfb1344759d7df0bdec5450e34d24e7139f56ecc",
+    "muse_attention_decode/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+    "muse_attention_decode/reference.py": "386f7f67a1d788501e8fb9005d340423d098a0946e23810ba10878228c11a37b",
+    "muse_attention_decode/submission.py": "1c3828573c362989db3385eff9a5b67a7c66d6503e9e242d28f9b150f6fb9472",
+    "muse_moe_w4a16/baseline.py": "4fc48bd9cdfd749863c93a2dbf4e556e0c38fb04acc4fa48a53ef34cbf6c92a1",
+    "muse_moe_w4a16/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+    "muse_moe_w4a16/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+    "muse_moe_w4a16/reference.py": "a7e0b4fa86aa477a4e7bb5745b2b258954d72636b6da153bd239a717927cba44",
+    "muse_moe_w4a16/submission.py": "c60a27afaaf1c14b2c1c4b2d8c4acfa62f916fdcaaeb8356e6e5d94e541851c8",
+    "muse_decode_layer/baseline.py": "87d95a0c4b78f0fd6c772436b959330ca45652b10e82dfc8add9acf0549227d4",
+    "muse_decode_layer/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+    "muse_decode_layer/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+    "muse_decode_layer/reference.py": "23e177b87aee70c0d4990515989b95bff2972270cdac8ab967445b21fa2f5163",
+    "muse_decode_layer/submission.py": "c90d9dafdefac27d37232f22d6cbdae6fe0d50b3f098f1644d847801f3bf0a92",
+    "muse_prefill_layer/baseline.py": "87d95a0c4b78f0fd6c772436b959330ca45652b10e82dfc8add9acf0549227d4",
+    "muse_prefill_layer/checks.py": "9a046c3c38db28b325dcd1557baecdf6bc9ef941d2175f9a900ba4c230bb8055",
+    "muse_prefill_layer/nvfp4.py": "cfdf37c7bc14b10f7353aba7d4632f4767401b92b4b073941a8030d9a961aaaf",
+    "muse_prefill_layer/reference.py": "23e177b87aee70c0d4990515989b95bff2972270cdac8ab967445b21fa2f5163",
+    "muse_prefill_layer/submission.py": "1e294bac7f86bfcde5368f690695569e6561b0f56f77a720b19b3d642793aeeb"
+  }
+}
