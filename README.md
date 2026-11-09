@@ -1,6 +1,6 @@
 # 커널 공부 저장소
 
-[Muse Spark Open Kernel Challenge](https://openkernelchallenge.dev/) 5문제를 다시 풀어 보며 공부하는 저장소다.
+[Muse Spark Open Kernel Challenge](https://openkernelchallenge.dev/) kernels 트랙 5문제를 다시 풀어 보며 공부하는 저장소다.
 
 ## 문제
 
