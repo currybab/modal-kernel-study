@@ -1,16 +1,18 @@
-# okc Muse Spark 커널 공부 저장소
+# 커널 공부 저장소
 
-okc Muse Spark 커널 대회(H200) 5문제를 다시 풀어 보며 공부하는 저장소다. 문제 파일과 측정 하네스는 공통으로 두고, 문제마다 공부 자료를 하나씩 얹는다.
+[Muse Spark Open Kernel Challenge](https://openkernelchallenge.dev/) 5문제를 다시 풀어 보며 공부하는 저장소다.
 
 ## 문제
 
-| 문제 | 내용 |
-|---|---|
-| `muse_bf16_proj` | 작은 m의 BF16/FP32 projection 5종 |
-| `muse_attention_decode` | decode attention |
-| `muse_moe_w4a16` | NVFP4 가중치 MoE |
-| `muse_decode_layer` | decode 레이어 전체 |
-| `muse_prefill_layer` | prefill 레이어 전체 |
+| 문제 | 내용 | 1위 (SGLang 대비) | 리더보드 |
+|---|---|---:|---|
+| `muse_bf16_proj` | 작은 m의 BF16/FP32 projection 5종 | 1.73× | [LEADERBOARD](okc-muse-spark/muse_bf16_proj/LEADERBOARD.md) |
+| `muse_attention_decode` | decode attention | 3.34× | [LEADERBOARD](okc-muse-spark/muse_attention_decode/LEADERBOARD.md) |
+| `muse_moe_w4a16` | NVFP4 가중치 MoE | 2.84× | [LEADERBOARD](okc-muse-spark/muse_moe_w4a16/LEADERBOARD.md) |
+| `muse_decode_layer` | decode 레이어 전체 | 2.61× | [LEADERBOARD](okc-muse-spark/muse_decode_layer/LEADERBOARD.md) |
+| `muse_prefill_layer` | prefill 레이어 전체 | 2.15× | [LEADERBOARD](okc-muse-spark/muse_prefill_layer/LEADERBOARD.md) |
+
+1위와 리더보드는 [공식 리더보드](https://openkernelchallenge.dev/leaderboard)를 2026-11-09에 옮겨 적은 것이다. 운영진이 검토 후 최종 순위를 따로 발표하기로 해서 아직 최종이 아니다.
 
 ## 폴더
 
@@ -20,6 +22,7 @@ okc-muse-spark/
   benchmarks/2026-10-23-h200-baseline/                  ← 5문제 baseline을 H200에서 잰 기록
   <문제>/
     TASK.md, AGENTS.md, reference.py, baseline.py, checks.py, submission.py (, nvfp4.py)   ← 대회가 준 파일 (고치지 않는다)
+    LEADERBOARD.md                                     ← 공식 리더보드 상위 10위 기록
 ```
 
 대회가 준 파일은 고치지 않는다. 문제 하나를 커밋 하나(또는 몇 개)로 얹는다.
